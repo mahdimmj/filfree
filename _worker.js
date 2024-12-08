@@ -1,17 +1,14 @@
 export default {
     async fetch(request, env) {
         try {
-            const incomingUrl = new URL(request.url);
-            
-            // Extract the port from the incoming request
-            const incomingPort = incomingUrl.port;
+            const incomingPort = request.headers.get("port");     
 
             const url = new URL(request.url);
             url.hostname = env.HOST || 'ictfz.ir';
             url.protocol = 'https:';
 
             // Use the incoming port if available, otherwise default to env.PORT or 2096
-            url.port = incomingPort || env.PORT || '2096';
+            url.port = incomingPort || env.PORT || '443';
 
             // Forward the modified request
             const newRequest = new Request(url, {
