@@ -1,0 +1,10 @@
+{
+  "name": "liMil TnlServer",
+  "version": 2.3,
+  "builds": [
+    {
+      "src": "_worker.js",
+      "use": "@vercel/node"
+    }
+  ]
+}
